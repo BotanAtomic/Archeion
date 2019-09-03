@@ -9,4 +9,9 @@ public class ResourcesUtils {
                 .getResource(String.format("layouts/%s.fxml", name));
     }
 
+    public static URL loadComponent(String name) {
+        return ResourcesUtils.class.getClassLoader()
+                .getResource(String.format("components/%s.fxml", name));
+    }
+
 }

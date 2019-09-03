@@ -1,0 +1,11 @@
+.hbox:hover {
+    -fx-background-color: rgba(21, 101, 192, 0.2);
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}

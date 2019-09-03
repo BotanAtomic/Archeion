@@ -6,7 +6,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.archeion.ui.utils.UI;
 
@@ -21,11 +22,11 @@ public class SearchBar {
     private static Timeline timeline;
 
     private static TextField search;
-    private static ImageView resetSearchIcon;
+    private static StackPane resetSearchIcon;
 
     private static List<Transition> currentTransitions;
 
-    public static void initialize(TextField search, ImageView resetSearchIcon) {
+    public static void initialize(TextField search, StackPane resetSearchIcon) {
         SearchBar.search = search;
         SearchBar.resetSearchIcon = resetSearchIcon;
         SearchBar.timeline = new Timeline();
@@ -35,6 +36,8 @@ public class SearchBar {
         resetSearchIcon.setOpacity(0);
 
         search.textProperty().addListener((observable, oldValue, newValue) -> startTimer());
+
+        resetSearchIcon.setOnMouseClicked(e -> reset(e));
     }
 
     private static void addTransition(Transition transition) {
@@ -65,6 +68,11 @@ public class SearchBar {
         timeline.play();
     }
 
+    public static void hide() {
+        if (UI.isVisible(search))
+            toggle();
+    }
+
     public static void toggle() {
         timeline.stop();
         currentTransitions.forEach(Animation::stop);
@@ -78,8 +86,9 @@ public class SearchBar {
         addTransition(fadeTransition(UI.isVisible(search), SEARCH_TRANSITION_TIME, search));
     }
 
-    public static void reset() {
+    private static void reset(MouseEvent event) {
         resetSearchIcon.setOpacity(0);
         search.clear();
+        event.consume();
     }
 }
