@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="400.0" minWidth="400.0" prefHeight="640.0" prefWidth="978.0" stylesheets="@../styles/root.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.archeion.ui.controller.RootController">
+<AnchorPane minHeight="400.0" minWidth="400.0" prefHeight="760.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.archeion.ui.controller.RootController">
     <children>
         <BorderPane fx:id="root" layoutX="14.0" layoutY="103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -23,12 +25,17 @@
             <center>
                 <AnchorPane BorderPane.alignment="CENTER">
                     <children>
+                  <ScrollPane fx:id="fileLayoutView" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vmax="1.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <stylesheets>
+                        <URL value="@../styles/file-manager.css" />
+                        <URL value="@../styles/scrollbar.css" />
+                     </stylesheets></ScrollPane>
                         <Region fx:id="regionResizer" layoutX="40.0" layoutY="14.0" prefHeight="200.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <cursor>
                                 <Cursor fx:constant="H_RESIZE" />
                             </cursor>
                         </Region>
-                  <ProgressBar fx:id="mainProgressBar" layoutX="97.0" layoutY="109.0" prefHeight="5.0" stylesheets="@../styles/progress-bar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ProgressBar fx:id="mainProgressBar" layoutX="97.0" layoutY="109.0" prefHeight="5.0" style="-fx-background-color: rgba(236, 236, 236, 1);" stylesheets="@../styles/progress-bar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
             </center>
@@ -45,6 +52,11 @@
                         <StackPane minWidth="24.0" prefWidth="24.0">
                            <children>
                               <SVGPath content="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="#f8f8f8" />
+                           </children>
+                        </StackPane>
+                        <StackPane minWidth="24.0" prefWidth="24.0">
+                           <children>
+                              <SVGPath content="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z" fill="#f8f8f8" />
                            </children>
                         </StackPane>
                         <StackPane minWidth="24.0" onMouseClicked="#toggleSearch" prefWidth="24.0">
@@ -112,7 +124,7 @@
                 </AnchorPane>
             </top>
         </BorderPane>
-      <AnchorPane layoutX="658.0" layoutY="40.0" maxWidth="294.0" minWidth="294.0" prefWidth="294.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+      <AnchorPane layoutX="658.0" layoutY="40.0" maxWidth="294.0" minWidth="294.0" prefWidth="294.0" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
          <children>
             <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="299.0" style="-fx-border-width: 0 0 .1 .1; -fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
             <StackPane fx:id="resetSearchRoot" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
@@ -127,4 +139,8 @@
          </children>
       </AnchorPane>
     </children>
+   <stylesheets>
+      <URL value="@../styles/root.css" />
+      <URL value="@../styles/context-menu.css" />
+   </stylesheets>
 </AnchorPane>

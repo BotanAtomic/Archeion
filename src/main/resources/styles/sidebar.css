@@ -1,11 +1,11 @@
-.hbox:hover {
-    -fx-background-color: rgba(21, 101, 192, 0.2);
+.selectable-bookmark:hover {
+    -fx-background-color: rgba(21, 101, 192, .2);
 }
 
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
+.drag-separator .line {
+    -fx-border-color: rgba(21, 101, 192, .2);;
 }
 
-.scroll-pane {
-    -fx-background-color: transparent;
+.drag-box {
+    -fx-background-color: rgba(46, 125, 50, .2);
 }

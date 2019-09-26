@@ -1,0 +1,131 @@
+[
+  {
+    "label": "Recent",
+    "expandable": false,
+    "selectable": true,
+    "icon": "history",
+    "action": {
+      "name": "recent",
+      "args": null
+    }
+  },
+  {
+    "label": "Favorites",
+    "expandable": false,
+    "selectable": true,
+    "icon": "heart",
+    "action":  {
+      "name": "favorite",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Home",
+    "expandable": true,
+    "selectable": true,
+    "icon": "home",
+    "action": {
+      "name": "home-path",
+      "args": null
+    }
+  },
+  {
+    "label": "Desktop",
+    "expandable": true,
+    "selectable": true,
+    "icon": "monitor",
+    "action": {
+      "name": "home-path",
+      "args": "desktop"
+    }
+  },
+  {
+    "label": "Documents",
+    "expandable": true,
+    "selectable": true,
+    "icon": "file_document",
+    "action": {
+      "name": "home-path",
+      "args": "document"
+    }
+  },
+  {
+    "label": "Downloads",
+    "expandable": true,
+    "selectable": true,
+    "icon": "download",
+    "action": {
+      "name": "home-path",
+      "args": "download"
+    }
+  },
+  {
+    "label": "Music",
+    "expandable": true,
+    "selectable": true,
+    "icon": "volume_high",
+    "action": {
+      "name": "home-path",
+      "args": "music"
+    }
+  },
+  {
+    "label": "Pictures",
+    "expandable": true,
+    "selectable": true,
+    "icon": "image",
+    "action": {
+      "name": "home-path",
+      "args": "picture"
+    }
+  },
+  {
+    "label": "Videos",
+    "expandable": true,
+    "selectable": true,
+    "icon": "video",
+    "action": {
+      "name": "home-path",
+      "args": "video"
+    }
+  },
+  {
+    "label": "Trash",
+    "expandable": false,
+    "selectable": true,
+    "icon": "delete",
+    "action": {
+      "name": "trash",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Linux Files",
+    "expandable": false,
+    "selectable": true,
+    "icon": "linux",
+    "action":  {
+      "name": "system-root",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Google Drive",
+    "expandable": false,
+    "selectable": false,
+    "icon": "google_drive",
+    "action":  {
+      "name": "add-google-account",
+      "args": null
+    }
+  }
+]

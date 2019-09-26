@@ -2,6 +2,7 @@ package org.archeion.ui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -10,8 +11,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.archeion.ui.components.Navigation;
 import org.archeion.ui.components.SearchBar;
-import org.archeion.ui.components.Sidebar;
-import org.archeion.ui.keymap.Keymaps;
+import org.archeion.ui.components.manager.FileLayout;
+import org.archeion.ui.components.manager.GridFlowFileLayout;
+import org.archeion.ui.components.sidebar.Sidebar;
+import org.archeion.keymap.Keymaps;
 import org.archeion.ui.skin.LinearProgressBarSkin;
 import org.archeion.ui.utils.Animation;
 import org.archeion.ui.utils.Draggable;
@@ -39,6 +42,10 @@ public class RootController {
     @FXML
     private StackPane resetSearchRoot;
 
+    @FXML
+    private ScrollPane fileLayoutView;
+
+    private FileLayout fileLayout;
 
     public void attachStage(Stage stage) {
         stage.getScene().widthProperty().addListener((observable, oldValue, newValue) -> {
@@ -51,8 +58,12 @@ public class RootController {
         stage.getScene().setOnMouseClicked(e -> SearchBar.hide());
     }
 
+    public void onVisible() throws IOException {
+        Sidebar.insert(sidebarRoot);
+    }
+
     @FXML
-    private void initialize() throws IOException {
+    private void initialize() {
         Stream.concat(
                 topButtons.getChildren().stream(),
                 navigateButtons.getChildren().stream())
@@ -69,9 +80,11 @@ public class RootController {
 
         searchBar.setOpacity(0);
 
-        Sidebar.insert(sidebarRoot);
+        fileLayout = new GridFlowFileLayout(fileLayoutView);
 
         mainProgressBar.setSkin(new LinearProgressBarSkin(mainProgressBar));
+
+        fileLayout.setCurrentPath(System.getProperty("user.home"), true);
     }
 
     @FXML
