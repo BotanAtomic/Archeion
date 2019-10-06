@@ -34,7 +34,9 @@
     -fx-pref-width: 9px;
 }
 
-.scroll-pane:focused {
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
     -fx-faint-focus-color: transparent;
     -fx-focus-color: transparent;
 }

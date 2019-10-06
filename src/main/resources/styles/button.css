@@ -1,0 +1,22 @@
+.default {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 0.5;
+    -fx-border-color: #1976D2;
+    -fx-text-fill: #1976D2;
+}
+
+.default:hover {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+}
+
+.default:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-border-width: 0;
+}

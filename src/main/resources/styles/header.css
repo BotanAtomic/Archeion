@@ -1,0 +1,15 @@
+AnchorPane {
+    -fx-background-color: #1565C0;
+}
+
+StackPane {
+    -fx-cursor: hand;
+}
+
+.svg-path {
+    -fx-fill: white;
+}
+
+.svg-path:disabled {
+    -fx-opacity: 0.5;
+}

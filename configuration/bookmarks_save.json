@@ -1,7 +1,6 @@
 [
   {
     "label": "Recent",
-    "expandable": false,
     "selectable": true,
     "icon": "history",
     "action": {
@@ -11,7 +10,6 @@
   },
   {
     "label": "Favorites",
-    "expandable": false,
     "selectable": true,
     "icon": "heart",
     "action":  {
@@ -24,7 +22,6 @@
   },
   {
     "label": "Home",
-    "expandable": true,
     "selectable": true,
     "icon": "home",
     "action": {
@@ -34,7 +31,6 @@
   },
   {
     "label": "Desktop",
-    "expandable": true,
     "selectable": true,
     "icon": "monitor",
     "action": {
@@ -44,7 +40,6 @@
   },
   {
     "label": "Documents",
-    "expandable": true,
     "selectable": true,
     "icon": "file_document",
     "action": {
@@ -54,7 +49,6 @@
   },
   {
     "label": "Downloads",
-    "expandable": true,
     "selectable": true,
     "icon": "download",
     "action": {
@@ -64,7 +58,6 @@
   },
   {
     "label": "Music",
-    "expandable": true,
     "selectable": true,
     "icon": "volume_high",
     "action": {
@@ -74,7 +67,6 @@
   },
   {
     "label": "Pictures",
-    "expandable": true,
     "selectable": true,
     "icon": "image",
     "action": {
@@ -84,7 +76,6 @@
   },
   {
     "label": "Videos",
-    "expandable": true,
     "selectable": true,
     "icon": "video",
     "action": {
@@ -94,7 +85,6 @@
   },
   {
     "label": "Trash",
-    "expandable": false,
     "selectable": true,
     "icon": "delete",
     "action": {
@@ -107,7 +97,6 @@
   },
   {
     "label": "Linux Files",
-    "expandable": false,
     "selectable": true,
     "icon": "linux",
     "action":  {
@@ -120,7 +109,6 @@
   },
   {
     "label": "Google Drive",
-    "expandable": false,
     "selectable": false,
     "icon": "google_drive",
     "action":  {

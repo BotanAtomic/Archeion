@@ -21,4 +21,4 @@ javafx {
 }
 
 
-mainClassName = 'org.archeion.core.Main'
+mainClassName = 'org.cosma.core.Main'

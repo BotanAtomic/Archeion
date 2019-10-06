@@ -1,0 +1,19 @@
+.label {
+    -fx-background-color: transparent;
+    -fx-padding: 0.2em 0.1em 0.2em 0.1em;
+    -fx-text-fill: #575757;
+    -fx-font-size: 13px;
+    -fx-font-family: 'Open Sans';
+}
+
+.label:hover {
+    -fx-text-fill: #0D47A1;
+    -fx-cursor: hand;
+}
+
+.root {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 0 10;
+    -fx-border-radius: 0 0 0 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}

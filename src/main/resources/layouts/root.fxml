@@ -1,82 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="400.0" minWidth="400.0" prefHeight="760.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.archeion.ui.controller.RootController">
+<AnchorPane fx:id="root" minHeight="400.0" minWidth="400.0" prefHeight="760.0" prefWidth="1070.0" stylesheets="@../styles/context-menu.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cosma.ui.controller.RootController">
     <children>
-        <BorderPane fx:id="root" layoutX="14.0" layoutY="103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane fx:id="borderPane" layoutX="14.0" layoutY="103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
-                <AnchorPane fx:id="sidebarRoot" minWidth="270.0" prefHeight="511.0" prefWidth="270.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" BorderPane.alignment="CENTER" />
+                <AnchorPane fx:id="sidebarRoot" minWidth="270.0" prefHeight="511.0" prefWidth="270.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin></AnchorPane>
             </left>
             <center>
-                <AnchorPane BorderPane.alignment="CENTER">
+                <AnchorPane style="-fx-border-width: 0;" BorderPane.alignment="CENTER">
                     <children>
-                  <ScrollPane fx:id="fileLayoutView" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vmax="1.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fx:id="fileLayoutView" hbarPolicy="NEVER" layoutX="49.0" layoutY="116.0" prefHeight="479.0" prefWidth="615.0" vmax="1.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <stylesheets>
                         <URL value="@../styles/file-manager.css" />
                         <URL value="@../styles/scrollbar.css" />
                      </stylesheets></ScrollPane>
-                        <Region fx:id="regionResizer" layoutX="40.0" layoutY="14.0" prefHeight="200.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <cursor>
-                                <Cursor fx:constant="H_RESIZE" />
-                            </cursor>
-                        </Region>
                   <ProgressBar fx:id="mainProgressBar" layoutX="97.0" layoutY="109.0" prefHeight="5.0" style="-fx-background-color: rgba(236, 236, 236, 1);" stylesheets="@../styles/progress-bar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Separator fx:id="regionResizer" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="H_RESIZE" />
+                     </cursor>
+                  </Separator>
                     </children>
                 </AnchorPane>
             </center>
             <top>
-                <AnchorPane style="-fx-background-color: #1565C0;" BorderPane.alignment="CENTER">
+                <AnchorPane stylesheets="@../styles/header.css" BorderPane.alignment="CENTER">
                     <children>
                         <HBox fx:id="topButtons" alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="30.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                             <children>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
-                           <children>
-                              <SVGPath content="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" fill="#f8f8f8" />
-                           </children>
-                        </StackPane>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
-                           <children>
-                              <SVGPath content="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="#f8f8f8" />
-                           </children>
-                        </StackPane>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
-                           <children>
-                              <SVGPath content="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z" fill="#f8f8f8" />
-                           </children>
-                        </StackPane>
                         <StackPane minWidth="24.0" onMouseClicked="#toggleSearch" prefWidth="24.0">
                            <children>
-                              <SVGPath content="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" fill="#f8f8f8" />
+                              <SVGPath content="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" fill="#f8f8f8" styleClass="svg-path" />
                            </children>
                         </StackPane>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
+                        <StackPane disable="true" minWidth="24.0" onMouseClicked="#share" prefWidth="24.0">
                            <children>
-                              <SVGPath content="M9.25,5L12.5,1.75L15.75,5H9.25M15.75,19L12.5,22.25L9.25,19H15.75M8.89,14.3H6L5.28,17H2.91L6,7H9L12.13,17H9.67L8.89,14.3M6.33,12.68H8.56L7.93,10.56L7.67,9.59L7.42,8.63H7.39L7.17,9.6L6.93,10.58L6.33,12.68M13.05,17V15.74L17.8,8.97V8.91H13.5V7H20.73V8.34L16.09,15V15.08H20.8V17H13.05Z" fill="#f8f8f8" />
+                              <SVGPath content="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" fill="#f8f8f8" styleClass="svg-path" />
                            </children>
                         </StackPane>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
+                        <StackPane disable="true" minWidth="24.0" onMouseClicked="#remove" prefWidth="24.0">
                            <children>
-                              <SVGPath content="M16,5V11H21V5M10,11H15V5H10M16,18H21V12H16M10,18H15V12H10M4,18H9V12H4M4,11H9V5H4V11Z" fill="#f8f8f8" />
+                              <SVGPath content="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" fill="#f8f8f8" styleClass="svg-path" />
                            </children>
                         </StackPane>
-                        <StackPane minWidth="24.0" prefWidth="24.0">
+                        <StackPane minWidth="24.0" onMouseClicked="#openTerminal" prefWidth="24.0">
                            <children>
-                              <SVGPath content="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" fill="#f8f8f8" />
+                              <SVGPath content="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z" fill="#f8f8f8" styleClass="svg-path" />
+                           </children>
+                        </StackPane>
+                        <StackPane minWidth="24.0" onMouseClicked="#openSortMenu" prefWidth="24.0">
+                           <children>
+                              <SVGPath content="M9.25,5L12.5,1.75L15.75,5H9.25M15.75,19L12.5,22.25L9.25,19H15.75M8.89,14.3H6L5.28,17H2.91L6,7H9L12.13,17H9.67L8.89,14.3M6.33,12.68H8.56L7.93,10.56L7.67,9.59L7.42,8.63H7.39L7.17,9.6L6.93,10.58L6.33,12.68M13.05,17V15.74L17.8,8.97V8.91H13.5V7H20.73V8.34L16.09,15V15.08H20.8V17H13.05Z" fill="#f8f8f8" styleClass="svg-path" />
+                           </children>
+                        </StackPane>
+                        <StackPane minWidth="24.0" onMouseClicked="#openDispositionMenu" prefWidth="24.0">
+                           <children>
+                              <SVGPath content="M16,5V11H21V5M10,11H15V5H10M16,18H21V12H16M10,18H15V12H10M4,18H9V12H4M4,11H9V5H4V11Z" fill="#f8f8f8" styleClass="svg-path" />
+                           </children>
+                        </StackPane>
+                        <StackPane minWidth="24.0" onMouseClicked="#openMainMenu" prefWidth="24.0">
+                           <children>
+                              <SVGPath content="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" fill="#f8f8f8" styleClass="svg-path" />
                            </children>
                         </StackPane>
                             </children>
@@ -120,27 +127,27 @@
                                 <Cursor fx:constant="DEFAULT" />
                             </cursor>
                         </HBox>
+                  <AnchorPane fx:id="searchRoot" layoutX="270.0" layoutY="10.0" maxHeight="30.0" maxWidth="420.0" minHeight="24.0" minWidth="210.0" prefHeight="30.0" prefWidth="402.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="398.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <TextField fx:id="searchBar" maxHeight="30.0" minHeight="24.0" prefHeight="30.0" prefWidth="299.0" promptText="Search files..." styleClass="round" stylesheets="@../styles/textfield.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </TextField>
+                        <StackPane fx:id="resetSearchRoot" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/icons/close.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
                     </children>
                 </AnchorPane>
             </top>
         </BorderPane>
-      <AnchorPane layoutX="658.0" layoutY="40.0" maxWidth="294.0" minWidth="294.0" prefWidth="294.0" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
-         <children>
-            <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="299.0" style="-fx-border-width: 0 0 .1 .1; -fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
-            <StackPane fx:id="resetSearchRoot" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icons/close.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-         </children>
-      </AnchorPane>
     </children>
-   <stylesheets>
-      <URL value="@../styles/root.css" />
-      <URL value="@../styles/context-menu.css" />
-   </stylesheets>
 </AnchorPane>
