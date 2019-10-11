@@ -2,11 +2,12 @@ package org.cosma.ui.components.bookmark.actions.navigation;
 
 import org.cosma.ui.components.bookmark.Action;
 import org.cosma.ui.components.bookmark.BookmarkModel;
+import org.cosma.ui.components.manager.FileLayoutManager;
 
 public class SystemRoot implements Action {
 
     @Override
     public void execute(BookmarkModel model) {
-        System.out.println("Linux files");
+        FileLayoutManager.setCurrentPath("/");
     }
 }

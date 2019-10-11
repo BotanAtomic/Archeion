@@ -1,1 +1,119 @@
-[{"selectable":true,"icon":"history","action":{"args":"","name":"recent"},"label":"Recent"},{"selectable":true,"icon":"heart","action":{"args":"","name":"favorite"},"label":"Favorites"},{"separator":true},{"selectable":true,"icon":"home","action":{"args":"","name":"home-path"},"label":"Home"},{"selectable":true,"icon":"monitor","action":{"args":"desktop","name":"home-path"},"label":"Desktop"},{"selectable":true,"icon":"file_document","action":{"args":"documents","name":"home-path"},"label":"Documents"},{"selectable":true,"icon":"download","action":{"args":"download","name":"home-path"},"label":"Downloads"},{"selectable":true,"icon":"volume_high","action":{"args":"music","name":"home-path"},"label":"Music"},{"selectable":true,"icon":"image","action":{"args":"pictures","name":"home-path"},"label":"Pictures"},{"selectable":true,"icon":"video","action":{"args":"videos","name":"home-path"},"label":"Videos"},{"selectable":true,"icon":"delete","action":{"args":"","name":"trash"},"label":"Trash"},{"separator":true},{"selectable":true,"icon":"linux","action":{"args":"","name":"system-root"},"label":"Linux Files"},{"separator":true},{"selectable":false,"icon":"google_drive","action":{"args":"","name":"add-google-account"},"label":"Google Drive"}]
+[
+  {
+    "label": "Recent",
+    "selectable": true,
+    "icon": "history",
+    "action": {
+      "name": "recent",
+      "args": null
+    }
+  },
+  {
+    "label": "Favorites",
+    "selectable": true,
+    "icon": "heart",
+    "action":  {
+      "name": "favorite",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Home",
+    "selectable": true,
+    "icon": "home",
+    "action": {
+      "name": "home-path",
+      "args": null
+    }
+  },
+  {
+    "label": "Desktop",
+    "selectable": true,
+    "icon": "monitor",
+    "action": {
+      "name": "home-path",
+      "args": "desktop"
+    }
+  },
+  {
+    "label": "Documents",
+    "selectable": true,
+    "icon": "file_document",
+    "action": {
+      "name": "home-path",
+      "args": "document"
+    }
+  },
+  {
+    "label": "Downloads",
+    "selectable": true,
+    "icon": "download",
+    "action": {
+      "name": "home-path",
+      "args": "download"
+    }
+  },
+  {
+    "label": "Music",
+    "selectable": true,
+    "icon": "volume_high",
+    "action": {
+      "name": "home-path",
+      "args": "music"
+    }
+  },
+  {
+    "label": "Pictures",
+    "selectable": true,
+    "icon": "image",
+    "action": {
+      "name": "home-path",
+      "args": "picture"
+    }
+  },
+  {
+    "label": "Videos",
+    "selectable": true,
+    "icon": "video",
+    "action": {
+      "name": "home-path",
+      "args": "video"
+    }
+  },
+  {
+    "label": "Trash",
+    "selectable": true,
+    "icon": "delete",
+    "action": {
+      "name": "trash",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Linux Files",
+    "selectable": true,
+    "icon": "linux",
+    "action":  {
+      "name": "system-root",
+      "args": null
+    }
+  },
+  {
+    "separator": true
+  },
+  {
+    "label": "Google Drive",
+    "selectable": false,
+    "icon": "google_drive",
+    "action":  {
+      "name": "add-google-account",
+      "args": null
+    }
+  }
+]

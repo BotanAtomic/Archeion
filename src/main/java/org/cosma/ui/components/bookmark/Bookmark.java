@@ -52,6 +52,7 @@ public class Bookmark {
         Label label = newIconLabel(IconFinder.find(model.getIconName()), model.getLabel(), "24", "14",
                 UNSELECTED_COLOR, UNSELECTED_COLOR);
 
+        label.setGraphicTextGap(20);
         label.setPrefHeight(50);
         label.setPrefWidth(200);
         label.setPadding(new Insets(0, 0, 0, 20));

@@ -97,7 +97,7 @@ public class LinearProgressBarSkin extends ProgressIndicatorSkin {
         if (pause) {
             indeterminateTransition.pause();
         } else {
-            indeterminateTransition.play();
+            indeterminateTransition.playFromStart();
         }
     }
 
@@ -116,6 +116,7 @@ public class LinearProgressBarSkin extends ProgressIndicatorSkin {
     private void createIndeterminateTimeline() {
         if (indeterminateTransition != null)
             clearAnimation();
+
 
         double dur = 1.7;
         ProgressIndicator control = getSkinnable();

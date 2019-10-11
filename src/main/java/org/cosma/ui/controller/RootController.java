@@ -12,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.cosma.keymap.Keymaps;
+import org.cosma.process.TerminalProcess;
+import org.cosma.ui.components.manager.FileLayout;
 import org.cosma.ui.components.manager.FileLayoutManager;
 import org.cosma.ui.components.manager.GridFlowFileLayout;
 import org.cosma.ui.components.menu.MenuManager;
@@ -62,7 +64,7 @@ public class RootController {
         Keymaps.bind(stage.getScene());
 
         stage.getScene().setOnMouseClicked(e -> {
-            //SearchBar.hide();
+            SearchBar.hide();
             MenuManager.hideCurrent();
         });
 
@@ -86,11 +88,13 @@ public class RootController {
         Navigation.initialize(navigateButtons);
         Draggable.setPaneHorizontalResizable(sidebarRoot, regionResizer);
         SearchBar.initialize(searchBar, resetSearchRoot);
+        SearchBar.hide();
 
-        searchBar.setOpacity(0);
+        searchBar.setOpacity(1);
 
         mainProgressBar.setSkin(new LinearProgressBarSkin(mainProgressBar));
 
+        FileLayoutManager.init(mainProgressBar);
         FileLayoutManager.setLayout(new GridFlowFileLayout(fileLayoutView));
         FileLayoutManager.setCurrentPath(System.getProperty("user.home"));
     }
@@ -112,12 +116,12 @@ public class RootController {
 
     @FXML
     private void openSortMenu() {
-
+        FileLayoutManager.nextSort();
     }
 
     @FXML
     private void openTerminal() {
-
+        TerminalProcess.open(FileLayoutManager.getCurrentPath().getAbsolutePath());
     }
 
     @FXML

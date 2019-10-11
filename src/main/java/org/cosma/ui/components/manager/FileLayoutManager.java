@@ -1,12 +1,18 @@
 package org.cosma.ui.components.manager;
 
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+import org.cosma.process.task.FileLoaderService;
 import org.cosma.utils.FileUtils;
 
 import java.io.File;
 import java.util.Comparator;
-import java.util.stream.Stream;
+import java.util.concurrent.Executors;
 
 public class FileLayoutManager {
+
+    private final static FileLoaderService service = new FileLoaderService();
+
 
     private static File currentPath;
 
@@ -14,10 +20,6 @@ public class FileLayoutManager {
     private static FileSort fileSort = FileSort.NAME_ASC;
 
     private static FileLayout layout;
-
-    public static void setLayout(FileLayout layout) {
-        FileLayoutManager.layout = layout;
-    }
 
     public static void toggleHiddenFile() {
         hiddenFile = !hiddenFile;
@@ -28,32 +30,62 @@ public class FileLayoutManager {
         return hiddenFile;
     }
 
+    public static File getCurrentPath() {
+        return currentPath;
+    }
+
     public static void setCurrentPath(String path) {
         currentPath = new File(path);
 
-        System.out.println("Set current path " +  path + " / exists: " + currentPath.exists());
+        System.out.println("Set current path " + path + " / exists: " + currentPath.exists());
 
         reload();
     }
 
     private static void load() {
-        File[] files = currentPath.listFiles();
-
-        if (files != null && files.length > 0) {
-            Stream<File> stream = Stream.of(files);
-
-            stream.filter(file -> file.isHidden() && hiddenFile || !file.isHidden())
-                    .sorted(fileSort.getComparator()).forEach(layout::addFile);
-        }
+        service.restart();
     }
 
     private static void clear() {
         layout.getPane().getChildren().clear();
     }
 
-    public static void reload() {
+    public static void nextSort() {
+        fileSort = fileSort.getNext();
+        reload();
+    }
+
+    private static void reload() {
         clear();
         load();
+    }
+
+    public static void init(ProgressBar progressBar) {
+        service.setExecutor(Executors.newCachedThreadPool());
+
+        service.setOnScheduled(e ->  {
+            progressBar.setVisible(true);
+        });
+
+        service.valueProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                layout.getPane().getChildren().addAll(newValue);
+            }
+        }));
+
+        service.setOnSucceeded(e -> progressBar.setVisible(false));
+    }
+
+    public static FileSort getSort() {
+        return fileSort;
+    }
+
+    public static FileLayout getLayout() {
+        return layout;
+    }
+
+    public static void setLayout(FileLayout layout) {
+        FileLayoutManager.layout = layout;
     }
 
 
@@ -65,7 +97,7 @@ public class FileLayoutManager {
         SIZE,
         TYPE;
 
-        Comparator<File> getComparator() {
+        public Comparator<File> getComparator() {
             switch (this) {
                 case NAME_ASC:
                     return Comparator.comparing(File::getName);
@@ -78,10 +110,14 @@ public class FileLayoutManager {
                 case SIZE:
                     return Comparator.comparingLong(File::length);
                 case TYPE:
-                    return Comparator.comparing(FileUtils::getType);
+                    return Comparator.comparing(FileUtils::getExtension);
             }
 
             return Comparator.comparing(f -> f);
+        }
+
+        FileSort getNext() {
+            return values()[(this.ordinal() + 1) % values().length];
         }
     }
 

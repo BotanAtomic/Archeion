@@ -16,12 +16,11 @@ public class FileUtils {
         }
     }
 
-    public static String getType(File file) {
-        try {
-            return Files.probeContentType(file.toPath());
-        } catch (IOException e) {
-            return null;
-        }
+    public static String getExtension(File file) {
+        if (file.isDirectory())
+            return "directory";
+        int index = file.getName().lastIndexOf(".");
+        return index > 0 ? file.getName().substring(index) : "";
     }
 
 }
